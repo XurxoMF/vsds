@@ -6,13 +6,17 @@ In this project you can find all the Dockercompose files used to generate the di
 
 ## How can I make a server using the docker images?
 
-Running a server with this images is really easy. First of all create a folder called `data` where you want. For example `/home/youruser/servername/data`.
+Running a server with this images is really easy. First of all install Docker following the guide for your operating system: [https://www.docker.com/](https://www.docker.com/)
+
+Now create a folder called `data` where you want. For example `/home/youruser/servername/data`.
 
 ```sh
 cd ~
 mkdir servername && cd servername
 mkdir data
 ```
+
+If you're on Windows or MacOS jusr create the folders with the context menu.
 
 Now that you have the folder created you can just start the server with this command:
 

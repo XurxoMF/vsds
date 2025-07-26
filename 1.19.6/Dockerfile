@@ -1,15 +1,15 @@
 # Use the official .NET runtime image as the base image
-FROM mcr.microsoft.com/dotnet/runtime:8.0
+FROM mcr.microsoft.com/dotnet/runtime:7.0
 
 # Define ENV variables
-ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/unstable/vs_server_linux-x64_1.21.0-rc.1.tar.gz" \
+ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_1.19.6.tar.gz" \
     SERVER_PORT="42420" \
     UID="1000" \
     GID="1000"
 
 # Install some needed packages
 RUN apt-get update && \
-    apt-get install -y curl netcat-openbsd gosu && \
+    apt-get install -y curl netcat gosu && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
