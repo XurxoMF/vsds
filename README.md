@@ -19,7 +19,7 @@ Now that you have the folder created you can just start the server with this com
 On Linux:
 
 ```sh
-docker run -d --name ContainerName \
+docker run -di --name ContainerName \
   -e UID=$(id -u) -e GID=$(id -g) \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
@@ -31,7 +31,7 @@ docker run -d --name ContainerName \
 On MacOS and Windows:
 
 ```sh
-docker run -d --name ContainerName \
+docker run -di --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
