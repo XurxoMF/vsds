@@ -9,20 +9,21 @@ ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64
 
 # Install some needed packages
 RUN apt-get update && \
-    apt-get install -y curl netcat && \
+    apt-get install -y curl netcat gosu && \
     apt-get clean autoclean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /server && mkdir /data
 
 # Create the vintagestory user and set up its home directory
-RUN useradd -u $UID -U -m -s /bin/bash vintagestory && usermod -G users vintagestory
+RUN groupadd -g 1000 vintagestory || true && \
+    useradd -u 1000 -g vintagestory -m -s /bin/bash vintagestory
 
 # Exposeserver port
 EXPOSE $SERVER_PORT
 
 # Healthcheck
-HEALTHCHECK --start-period=1m --interval=5s CMD nc -z  127.0.0.1 $SERVER_PORT
+HEALTHCHECK --start-period=1m --interval=5s CMD nc -z 127.0.0.1 $SERVER_PORT
 
 # Change to the vintagestory user's home directory
 WORKDIR /server
@@ -41,9 +42,6 @@ VOLUME ["/data"]
 # Add entrypoint script to handle server startup
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
-# Change to the vintagestory user
-USER vintagestory
 
 # Run the server
 ENTRYPOINT ["/entrypoint.sh"]

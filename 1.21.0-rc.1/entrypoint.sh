@@ -1,9 +1,14 @@
 #!/bin/sh
 set -e
 
-# Ensure UID and GID are correctly set and change them is the user changed them
-if [ ! "$(id -u vintagestory)" -eq "$UID" ]; then usermod -o -u "$UID" vintagestory ; fi
-if [ ! "$(id -g vintagestory)" -eq "$GID" ]; then groupmod -o -g "$GID" vintagestory ; fi
-
-# Continue with the container run command
-exec "$@"
+if [ "$(id -u)" = "0" ]; then
+    # Change UID/GID only if running as root (i.e., on Linux)
+    if [ "$UID" != "1000" ] || [ "$GID" != "1000" ]; then
+        groupmod -o -g "$GID" vintagestory 2>/dev/null || true
+        usermod -o -u "$UID" vintagestory 2>/dev/null || true
+    fi
+    exec gosu vintagestory "$@"
+else
+    # For non-root systems (like Docker Desktop on Mac/Windows)
+    exec "$@"
+fi
