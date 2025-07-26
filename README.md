@@ -14,9 +14,21 @@ mkdir /home/youruser/servername/data
 
 Now that you have the folder created you can just start the server with this command:
 
+On Linux:
+
 ```sh
 docker run -d --name ContainerName \
   -e UID=$(id -u) -e GID=$(id -g) \
+  -p 42420:42420 \
+  -v /home/youruser/servername/data:/data \
+  --restart unless-stopped \
+  xurxomf/vsds:X.X.X
+```
+
+On MacOS and Windows:
+
+```sh
+docker run -d --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
