@@ -24,6 +24,7 @@ docker run -d --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
+  --sig-proxy=false
   xurxomf/vsds:X.X.X
 ```
 
@@ -34,6 +35,7 @@ docker run -d --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
+  --sig-proxy=false
   xurxomf/vsds:X.X.X
 ```
 
@@ -106,7 +108,7 @@ If you need to open the server terminal use this command instead:
 docker attach ContainerName
 ```
 
-Here you'll be able to execute any command you want. Once you've finished just press `Ctrl + P and then Ctrl + Q`. This will close the terminal but keep the container running.
+Here you'll be able to execute any command you want. Once you've finished just press `Ctrl + C`. This will close the terminal but keep the container running.
 
 ## How can I generate an image?
 
