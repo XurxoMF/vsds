@@ -113,7 +113,7 @@ Here you'll be able to execute any command you want. Once you've finished just p
 You don't need to do this, you can just use the ones I've uploaded to Docker Hub but, if you need to do so, open the folder of the version you need and then you can use this command:
 
 ```sh
-docker build -t ImageName:X.X.X .
+docker build -t ImageName .
 ```
 
 - `ImageName` is the name of your image.
