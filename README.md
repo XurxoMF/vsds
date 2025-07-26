@@ -9,7 +9,9 @@ In this project you can find all the Dockercompose files used to generate the di
 Running a server with this images is really easy. First of all create a folder called `data` where you want. For example `/home/youruser/servername/data`.
 
 ```sh
-mkdir /home/youruser/servername/data
+cd ~
+mkdir servername && cd servername
+mkdir data
 ```
 
 Now that you have the folder created you can just start the server with this command:
