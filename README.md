@@ -24,7 +24,7 @@ docker run -di --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
-  --sig-proxy=false
+  --sig-proxy=false \
   xurxomf/vsds:X.X.X
 ```
 
@@ -35,7 +35,7 @@ docker run -di --name ContainerName \
   -p 42420:42420 \
   -v /home/youruser/servername/data:/data \
   --restart unless-stopped \
-  --sig-proxy=false
+  --sig-proxy=false \
   xurxomf/vsds:X.X.X
 ```
 
