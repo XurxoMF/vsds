@@ -100,13 +100,7 @@ docker logs ContainerName
 
 ### How can I execute commands on the server?
 
-If you need to execute a command on the container/server just use the next command:
-
-```sh
-docker exec -it ContainerName <command>
-```
-
-If you need to open the server terminal use this command instead:
+If you need to open the server terminal to execute a command use this command:
 
 ```sh
 docker attach ContainerName
