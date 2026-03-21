@@ -1,5 +1,5 @@
 # Use the official .NET runtime image as the base image
-FROM mcr.microsoft.com/dotnet/runtime:8.0
+FROM mcr.microsoft.com/dotnet/runtime:10.0
 
 # Define ENV variables
 ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/unstable/vs_server_linux-x64_1.22.0-rc.2.tar.gz" \
@@ -15,8 +15,10 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir /server && mkdir /data
 
-# Create the vintagestory user and set up its home directory
-RUN groupadd -g 1000 vintagestory || true && \
+# Remove the default ubuntu user and create the vintagestory user and group
+RUN userdel -r ubuntu 2>/dev/null || true && \
+    groupdel ubuntu 2>/dev/null || true && \
+    groupadd -g 1000 vintagestory && \
     useradd -u 1000 -g vintagestory -m -s /bin/bash vintagestory
 
 # Exposeserver port
