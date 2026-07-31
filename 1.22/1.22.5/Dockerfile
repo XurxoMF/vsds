@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/runtime:10.0
 
 # Define ENV variables
-ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_1.22.3.tar.gz" \
+ENV SERVER_URL="https://cdn.vintagestory.at/gamefiles/stable/vs_server_linux-x64_1.22.5.tar.gz" \
     SERVER_PORT="42420" \
     UID="1000" \
     GID="1000"
